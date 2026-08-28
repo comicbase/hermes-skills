@@ -1,0 +1,39 @@
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# ===== macOS =====
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ===== 编辑器 / IDE =====
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ===== 房源媒体文件（技能仓库只存代码/文档，不存实际房源数据）=====
+# 防止误提交照片/视频/户型图/三维模型等包含房源信息的大文件
+*.jpg
+*.jpeg
+*.avif
+*.mp4
+*.mov
+*.at3d
+*.glb
+*.gltf
+*.obj
+*.ply
+*.zip
+
+# ===== 临时文件 / 日志 =====
+*.log
+*.tmp
+tmp/
