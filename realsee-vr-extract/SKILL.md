@@ -93,8 +93,14 @@ JSON paths, URL patterns, and the verified ffmpeg commands.
   compressed/encrypted client-side). Do not burn time decoding — ask the user for the web link.
 - **ke.com / lianjia.com listing pages redirect to a captcha** (`hip.ke.com/captcha`). The
   realsee VR page already embeds everything you need — use it, don't fight the captcha.
+- **Videos: URL is `http://` (not `https://`) and needs `Referer: https://open.realsee.com/`** or
+  you get 403/empty. Also, `multimedia[type=video]` entries are 小区 (community) videos — building
+  exterior / stairwell / gate / elevator / parking — NOT house-interior. Interior videos (if any)
+  live on the captcha-protected listing page. Confirm which the user wants before downloading.
 - **ffmpeg has no avif decoder** (`ffmpeg -decoders | grep avif` → 0). Convert server-side with
   `?imageMogr2/format=jpg|png` (Tencent Cloud COS supports it).
+- **If the user says "不用拼接、只要原始照片",** download only the 6 cube faces per observation
+  point (front/back/left/right/up/down) — do NOT synthesize the equirectangular on your own.
 - **v360 `yaw`/`pitch`/`roll` do NOT support per-frame `t` expressions** (only `h_fov`/`v_fov`
   do). For animated pan, wrap the equirectangular: `[0]hstack=2[ee];[ee]crop=W:H:x='t*speed':y=0[rot];[rot]v360=e:flat:yaw=0:...`. `yaw` range is `[-180,180]` — normalize any out-of-range value into this range.
 - **`model.file_url` is a proprietary `.at3d` binary** (magic `01 00 00 00`, size u32 follows) — NOT glTF/zip/OBJ/PLY. No open parser exists, so it cannot be converted to `.glb`/`.obj`. Save it verbatim (plus the `material_textures[]` jpgs) and tell the user it only opens in Beike's app 「三维模型」 mode. Don't sink time into reverse-engineering the mesh.
@@ -151,5 +157,5 @@ JSON paths, URL patterns, and the verified ffmpeg commands.
 ## References
 
 - `references/realsee-page-structure.md` — exact JSON paths, URL patterns, verified ffmpeg commands.
-- `scripts/realsee_download.py` — fetch + download faces + synthesize all panoramas in one run.
+- `scripts/realsee_download.py` — fetch + download videos/images + faces + synthesize all panoramas in one run.
 - `templates/viewer.html` — three.js 360° viewer (drag to rotate, wheel zoom, scene switcher).

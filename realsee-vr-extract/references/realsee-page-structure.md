@@ -30,6 +30,9 @@ Top-level keys: `firstscreen`, `configure`, `viewports`.
 | `firstscreen.defaultWork.initial` | `{longitude, latitude, fov, pano_index}` (radians) |
 | `firstscreen.defaultWork.picture_url` | **official cover = ground-truth orientation for verification** |
 
+`firstscreen.resblockInfo` = the community (小区) info: `detail.data[]` + `multimedia[]` (same media
+as `houseInfo.multimedia`). `firstscreen.houseInfo.params` carries `workCode` / `platform` / `relationId`.
+
 `multimedia[type=video]` entries are community (小区) videos, not house-interior — e.g.
 `http://video.ljcdn.com/resblock-video/<ts>_<hash>_ke.mp4`. Download directly with a Referer header.
 
