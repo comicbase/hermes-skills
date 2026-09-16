@@ -6,6 +6,7 @@
 
 | 技能 | 说明 |
 |---|---|
+| [`android-cli-maintenance`](android-cli-maintenance/) | 维护/排错 Google 的 Android CLI（`android` 命令）自身：launcher 与 runtime 两层结构、`android info` 两个版本号的关系、如何单独更新 launcher、`android init` 往各 agent 目录撒 skill 的副作用与 Apache-2.0 许可提醒。 |
 | [`realsee-vr-extract`](realsee-vr-extract/) | 从贝壳/如视(realsee)房源提取 360° VR 全景（立方体面图→等距柱状投影）、户型图、三维模型、视频/图片，并生成可拖拽观看的本地全景查看器（three.js）。 |
 
 ## 目录结构
